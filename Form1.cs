@@ -14,9 +14,6 @@ namespace Bezier
 {
 	public partial class Form1 : Form
 	{
-		int N = 5;
-		int count = 0;
-		List<Marker[]> markerss = new List<Marker[]>();
 		List<BezierCurve> beziers = new List<BezierCurve>();
 
 		public Form1()
@@ -38,7 +35,6 @@ namespace Bezier
 			ILoader _loader;
 			if (dr == DialogResult.OK)
 			{
-				count = 0;
 				_loader = new FromFileLoader(op.FileName);
 				var points = _loader.Load();
 
@@ -48,39 +44,9 @@ namespace Bezier
 				{
 					list.Add(Bpoint.Apply(point));
 				}
-				N = list.Count;
-				New_Beze(list, count);
-				count++;
+				beziers.Add(new BezierCurve(list.ToArray(), pB.Invalidate, Cursor));
 				pB.Refresh();
 			}
-		}
-
-		void New_Beze(List<PointF> list, int n)
-		{
-			Marker[] macr = new Marker[N];
-			BezierCurve bezier = null;
-			
-			markerss.Add(list.Select(item => new Marker(item)).ToArray());
-
-			for (int index = 0; index < N; index++)
-			{
-				Marker marker = markerss[n][index];
-				int i = index;
-				marker.OnDrag += f =>
-				{
-					bezier[i] = f;
-					pB.Invalidate();
-				};
-				marker.OnMouseDown += f => { Cursor = Cursors.Hand; };
-			}
-
-			bezier = new BezierCurve(markerss[n].Select(m => m.Location).ToArray());
-			beziers.Add(bezier);
-		}
-
-		private void pB_Click(object sender, EventArgs e)
-		{
-
 		}
 
 		private void pB_Paint(object sender, PaintEventArgs e)
@@ -88,17 +54,15 @@ namespace Bezier
 			e.Graphics.SmoothingMode = SmoothingMode.HighQuality;
 			var pen = new Pen(Color.Gray, 1f);
 
-			foreach (Marker[] mark in markerss)
+			foreach (var bezi in beziers)
 			{
-				e.Graphics.DrawLines(pen, mark.Select(m => m.Location).ToArray());
-				foreach (Marker marker in mark)
+				bezi.Draw(e.Graphics);
+				//e.Graphics.DrawLines(pen, bezi._markers.Select(m => m.Location).ToArray());
+
+				foreach (var marker in bezi._markers)
 				{
 					marker.Draw(e.Graphics);
 				}
-			}
-			foreach (BezierCurve bezi in beziers)
-			{
-				bezi.Draw(e.Graphics);
 			}
 		}
 
@@ -106,24 +70,22 @@ namespace Bezier
 		{
 			if (e.Button == MouseButtons.Left)
 			{
-
-				foreach (Marker[] mark in markerss)
+				foreach (var bezi in beziers)
 				{
-					foreach (Marker marker in mark)
+					foreach (var marker in bezi._markers)
 					{
 						marker.MouseMove(e);
 						Thread.Sleep(0);
 					}
 				}
-
 			}
 		}
 
 		private void pB_MouseDown(object sender, MouseEventArgs e)
 		{
-			foreach (Marker[] mark in markerss)
+			foreach (var bezi in beziers)
 			{
-				foreach (Marker marker in mark)
+				foreach (var marker in bezi._markers)
 				{
 					marker.MouseDown(e);
 				}
@@ -132,9 +94,9 @@ namespace Bezier
 
 		private void pB_MouseUp(object sender, MouseEventArgs e)
 		{
-			foreach (Marker[] mark in markerss)
+			foreach (var bezi in beziers)
 			{
-				foreach (Marker marker in mark)
+				foreach (var marker in bezi._markers)
 				{
 					marker.MouseUp();
 				}

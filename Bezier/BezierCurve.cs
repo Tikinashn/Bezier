@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using System.Windows.Forms;
 using Bezier.Bezier.Pointer;
 using Interpolations.Interpolations.Factorys;
 using Interpolations.Interpolations.ParametricInterpolation;
@@ -38,13 +39,31 @@ namespace Bezier.Bezier
 		/// </summary>
 		private IPointer Pointer { get;}
 
+		public Marker[] _markers { get; set; }
+
 		/// <summary>
 		/// Создание кривой безье
 		/// </summary>
 		/// <param name="points">Опроные точки</param>
-		public BezierCurve(PointF[] points)
+		public BezierCurve(PointF[] points, Action action, Cursor cursor)
 		{
-			_dataPoints = points;
+			_markers = new Marker[points.Length];
+
+			var markerssList = points.Select(item => new Marker(item)).ToArray();
+
+			for (var index = 0; index < points.Length; index++)
+			{
+				var marker = _markers[index] =  markerssList[index];
+				var i = index;
+				marker.OnDrag += f =>
+				{
+					this[i] = f;
+					action.Invoke();
+				};
+				marker.OnMouseDown += f => { cursor = Cursors.Hand; };
+			}
+
+			_dataPoints = markerssList.Select(m => m.Location).ToArray();
 			Pointer = new GaussPointer();
 			Invalidate();
 		}
@@ -120,7 +139,8 @@ namespace Bezier.Bezier
 		public void Draw(Graphics g)
 		{
 			var pen = new Pen(Color.Black, 2f);
-			//var points = DrawingPoints.Select(Bpoint.Apply).ToArray();
+			var helpLinesPen = new Pen(Color.Gray, 1f);
+			g.DrawLines(helpLinesPen, _markers.Select(m => m.Location).ToArray());
 			g.DrawLines(pen, DrawingPoints);
 		}
 	}

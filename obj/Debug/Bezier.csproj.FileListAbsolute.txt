@@ -27,3 +27,30 @@ C:\Users\User\Desktop\Диплом\ПО\Тесты моделирования к
 C:\Users\User\Desktop\Диплом\ПО\Тесты моделирования кривых\Bezier\bin\Debug\tr\ZedGraph.resources.dll
 C:\Users\User\Desktop\Диплом\ПО\Тесты моделирования кривых\Bezier\bin\Debug\zh-cn\ZedGraph.resources.dll
 C:\Users\User\Desktop\Диплом\ПО\Тесты моделирования кривых\Bezier\bin\Debug\zh-tw\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\Bezier.exe.config
+C:\Users\User\Documents\Bezier\obj\Debug\Bezier.exe
+C:\Users\User\Documents\Bezier\obj\Debug\Bezier.pdb
+C:\Users\User\Documents\Bezier\obj\Debug\Bezier.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Bezier\obj\Debug\Bezier.Form1.resources
+C:\Users\User\Documents\Bezier\obj\Debug\Bezier.Properties.Resources.resources
+C:\Users\User\Documents\Bezier\obj\Debug\Bezier.csproj.GenerateResource.Cache
+C:\Users\User\Documents\Bezier\bin\Debug\Bezier.exe
+C:\Users\User\Documents\Bezier\bin\Debug\Bezier.pdb
+C:\Users\User\Documents\Bezier\bin\Debug\alglibnet2.dll
+C:\Users\User\Documents\Bezier\bin\Debug\TikiCalk.dll
+C:\Users\User\Documents\Bezier\bin\Debug\Interpolations.pdb
+C:\Users\User\Documents\Bezier\bin\Debug\ZedGraph.xml
+C:\Users\User\Documents\Bezier\bin\Debug\TikiCalk.pdb
+C:\Users\User\Documents\Bezier\bin\Debug\de\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\es\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\fr\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\hu\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\it\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\ja\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\pt\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\ru\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\sk\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\sv\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\tr\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\zh-cn\ZedGraph.resources.dll
+C:\Users\User\Documents\Bezier\bin\Debug\zh-tw\ZedGraph.resources.dll

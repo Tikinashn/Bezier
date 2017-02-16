@@ -40,7 +40,6 @@
 			this.pB.Size = new System.Drawing.Size(751, 368);
 			this.pB.TabIndex = 0;
 			this.pB.TabStop = false;
-			this.pB.Click += new System.EventHandler(this.pB_Click);
 			this.pB.Paint += new System.Windows.Forms.PaintEventHandler(this.pB_Paint);
 			this.pB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pB_MouseDown);
 			this.pB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pB_MouseMove);
